@@ -11,25 +11,41 @@
 </head>
 
 <body>
-    <header>
+    <header id="mainHeader">
         <div class="container">
-            <h1>Nemo Tech</h1>
+            <h1 id="pageName" data-translate="siteName">Nemo Tech</h1>
             <nav>
                 <ul>
-                    <li class="nav-item"><a href="#home" class="nav-link">Home page</a></li>
-                    <li class="nav-item"><a href="#about-us" class="nav-link">About us</a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link">Our services</a></li>
-                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact us</a></li>
+                    <li class="nav-item"><a href="#home" class="nav-link" data-translate="home">Home page</a></li>
+                    <li class="nav-item"><a href="#about-us" class="nav-link" data-translate="about">About us</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link" data-translate="serv">Our services</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link" data-translate="portf">Portfolio</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link" data-translate="cont">Contact us</a></li>
                 </ul>
             </nav>
-            <div class="auth-buttons">
-                <button class="btn" id="loginButton">Login</button>
-                <button class="btn" id="signupButton">Sign
-                        Up</button>
+            <div class="user-menu">
+                <button class="user-menu-btn"><div class="dots"></div></button>
+                <div class="dropdown-menu">
+                    <a href="#" id="loginButton">Login</a>
+                    <a href="#" id="signupButton">Sign up</a>
+                    <div class="settings-dropdown">
+                        <a href="#" id="settingsButton">Settings</a>
+                        <div class="settigs-menu">
+                            <div class="language-dropdown">
+                                <a href="#" id="changeLanguage">Change language <span id="currentLang">English</span><i class="fas fa-caret-down"></i></a>
+                                <div class="language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="ar">العربية</a>
+                                </div>
+                            </div>
+                            <a href="#" id="toggleTheme">Change theme<span id="currentTheme">Light</span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
+    <button id="toggleHeader" class="toggle-header"></button>
     <main>
         <div id="loginPopup" class="modal">
             <div class="modal-content">
@@ -194,5 +210,7 @@
 
     <script src="script.js"></script>
 </body>
+
+</html>
 
 </html>
