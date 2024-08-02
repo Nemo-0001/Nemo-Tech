@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-them="auto">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nemo Tech</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Robot.png" type="image/png">
+    <link rel="icon" href="Images/Robot.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body>
-    <header id="mainHeader">
+<body lang="en">
+    <header id="mainHeader" class="header-item">
         <div class="container">
-            <h1 id="pageName" data-translate="siteName">Nemo Tech</h1>
+            <h1 id="pageName" data-translate="siteName"></h1>
             <nav>
-                <ul>
+                <ul class="nav-list">
                     <li class="nav-item"><a href="#home" class="nav-link" data-translate="home">Home page</a></li>
-                    <li class="nav-item"><a href="#about-us" class="nav-link" data-translate="about">About us</a></li>
+                    <li class="nav-item"><a href="#aboutUs" class="nav-link" data-translate="about">About us</a></li>
                     <li class="nav-item"><a href="#services" class="nav-link" data-translate="serv">Our services</a></li>
                     <li class="nav-item"><a href="#portfolio" class="nav-link" data-translate="portf">Portfolio</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link" data-translate="cont">Contact us</a></li>
@@ -26,23 +26,24 @@
             <div class="user-menu">
                 <button class="user-menu-btn"><div class="dots"></div></button>
                 <div class="dropdown-menu">
-                    <a href="#" id="loginButton">Login</a>
-                    <a href="#" id="signupButton">Sign up</a>
+                    <a href="#" id="loginButton" data-translate="login">Login</a>
+                    <a href="#" id="signupButton" data-translate="signup">Sign up</a>
                     <div class="settings-dropdown">
-                        <a href="#" id="settingsButton">Settings</a>
+                        <a href="#" id="settingsButton" data-translate="set">Settings</a>
                         <div class="settigs-menu">
                             <div class="language-dropdown">
-                                <a href="#" id="changeLanguage">Change language <span id="currentLang">English</span><i class="fas fa-caret-down"></i></a>
+                                <a href="#" id="changeLanguage"><span data-translate="lang">Choose language</span><i id="arrowDown" class="fas fa-caret-down"></i></a>
                                 <div class="language-options">
                                     <a href="#" data-lang="en">English</a>
                                     <a href="#" data-lang="ar">العربية</a>
                                 </div>
                             </div>
-                            <a href="#" id="toggleTheme">Change theme<span id="currentTheme">Light</span></a>
+                            <a href="#" id="toggleTheme"><span data-translate="theme">Change theme</span><span id="themeIcon" class="fas fa-moon"></span></a>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </header>
     <button id="toggleHeader" class="toggle-header"></button>
@@ -50,13 +51,13 @@
         <div id="loginPopup" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2>Login</h2>
+                <h2 data-translate="login">Login</h2>
                 <form>
-                    <label for="login-email">Email:</label>
+                    <label for="login-email" data-translate="email">Email:</label>
                     <input type="email" id="login-email" name="login-email" required>
-                    <label for="login-password">Password:</label>
+                    <label for="login-password" data-translate="pass">Password:</label>
                     <input type="password" id="login-password" name="login-password" required>
-                    <button type="submit">Login</button>
+                    <button type="submit" data-translate="login">Login</button>
                 </form>
             </div>
         </div>
@@ -64,133 +65,130 @@
         <div id="signupPopup" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2>Sign Up</h2>
+                <h2 data-translate="signup">Sign Up</h2>
                 <form>
-                    <label for="signup-name">Name:</label>
+                    <label for="signup-name" data-translate="name">Name:</label>
                     <input type="text" id="signup-name" name="signup-name" required>
-                    <label for="signup-email">Email:</label>
+                    <label for="signup-email" data-translate="email">Email:</label>
                     <input type="email" id="signup-email" name="signup-email" required>
-                    <label for="signup-password">Password:</label>
+                    <label for="signup-password" data-translate="pass">Password:</label>
                     <input type="password" id="signup-password" name="signup-password" required>
-                    <button type="submit">Sign Up</button>
+                    <button type="submit" data-translate="signup">Sign Up</button>
                 </form>
             </div>
         </div>
         <section class="home" id="home">
             <div class="overlay"></div>
             <div class="content">
-                <h1>Welcome to Our Tech World</h1>
-                <p>Innovating the future with cutting-edge technology solutions
-                </p>
-                <a href="#services" class="btn">Discover Our Services</a>
-                <a href="#contact" class="btn btn-secondary">Get In
-                        Touch</a>
+                <h1 data-translate="welcome">Welcome to Our Tech World</h1>
+                <p data-translate="welcomep">Innovating the future with cutting-edge technology solutions</p>
+                <a href="#services" class="btn" data-translate="discover">Discover Our Services</a>
+                <a href="#contact" class="btn btn-secondary" data-translate="intouch">Get In Touch</a>
             </div>
         </section>
 
-        <section id="about-us" class="about-us">
+        <section id="aboutUs" class="about-us">
             <div class="container">
-                <h2>About Us</h2>
-                <p>We are dedicated to delivering cutting-edge technology solutions that empower businesses and individuals alike. With a team of passionate professionals, we aim to innovate and excel in everything we do.</p>
+                <h2 data-translate="about">About Us</h2>
+                <p data-translate="aboutus">We are dedicated to delivering cutting-edge technology solutions that empower businesses and individuals alike. With a team of passionate professionals, we aim to innovate and excel in everything we do.</p>
                 <div class="about-grid">
                     <div class="about-item">
-                        <h3>Our Mission</h3>
-                        <p>Our mission is to create value through technology by providing innovative solutions that improve lives and drive business success.</p>
+                        <h3 data-translate="mission">Our Mission</h3>
+                        <p data-translate="ourmission">Our mission is to create value through technology by providing innovative solutions that improve lives and drive business success.</p>
                     </div>
                     <div class="about-item">
-                        <h3>Our Vision</h3>
-                        <p>Our vision is to be a global leader in technology, setting standards of excellence in the industry and making a positive impact on the world.
-                        </p>
+                        <h3 data-translate="vision">Our Vision</h3>
+                        <p data-translate="ourvision">Our vision is to be a global leader in technology, setting standards of excellence in the industry and making a positive impact on the world.</p>
                     </div>
                     <div class="about-item">
-                        <h3>Our Values</h3>
-                        <ul>
-                            <li>Innovation</li>
-                            <li>Integrity</li>
-                            <li>Customer Focus</li>
-                            <li>Excellence</li>
-                            <li>Teamwork</li>
+                        <h3 data-translate="values">Our Values</h3>
+                        <ul class="about-us-list">
+                            <li data-translate="innov">Innovation</li>
+                            <li data-translate="integrity">Integrity</li>
+                            <li data-translate="customer">Customer Focus</li>
+                            <li data-translate="excellence">Excellence</li>
+                            <li data-translate="teamwork">Teamwork</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="services">
-            <h2>Our sevices</h2>
+        <section id="services" class="services-section">
+            <h2 data-translate="serv">Our sevices</h2>
             <div class="services-grid">
                 <div class="service" id="service1">
-                    <img src="Embedded systems.png" alt="Embedded systems" class="service-img">
+                    <img src="Images/Embedded systems.png" alt="Embedded systems" class="service-img">
                     <div id="myPopup1" class="popup">
                         <div class="popup-content">
                             <span class="close" onclick="closePopup('myPopup1')">&times;
                                 </span>
-                            <h3>Embedded systems</h3>
-                            <p>Developing professional embedded systems projects
+                            <h3 data-translate="servone">Embedded systems</h3>
+                            <p data-translate="servonep">Developing professional embedded systems projects
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="service" id="service2">
-                    <img src="Frontend develoment.png" alt="Frontend" class="service-img">
+                    <img src="Images/Frontend develoment.png" alt="Frontend" class="service-img">
                     <div id="myPopup2" class="popup">
                         <div class="popup-content">
                             <span class="close" onclick="closePopup('myPopup2')">&times;
                                 </span>
-                            <h3>Web develoment</h3>
-                            <p>Creating professional webpages based on your desires
+                            <h3 data-translate="servtwo">Web develoment</h3>
+                            <p data-translate="servtwop">Creating professional webpages based on your desires
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="service" id="service3">
-                    <img src="Consulting.jpg" alt="Consultants" class="service-img">
+                    <img src="Images/Consulting.jpg" alt="Consultants" class="service-img">
                     <div id="myPopup3" class="popup">
                         <div class="popup-content">
                             <span class="close" onclick="closePopup('myPopup3')">&times;
                                 </span>
-                            <h3>Consultants</h3>
-                            <p>We provide consultants in technical as well as personal life</p>
+                            <h3 data-translate="servthree">Consultants</h3>
+                            <p data-translate="servthreep">We provide consultants in technical as well as personal life</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="portfolio">
-            <h2>Portfolio</h2>
+        <section id="portfolio" class="portfolio-section">
+            <h2 data-translate="portf">Portfolio</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <a class="portfolio-link" target="_blank" href="https://github.com/Nemo-0001/ADAS-project-using-STM32f103c8t6.git">
-                        <img src="ADAS.jpg" alt="ADAS">
-                        <h3><span class="portfolio-highlight">ADAS</span> - Advanced driver assistance system</h3>
+                        <img src="Images/ADAS.jpg" alt="ADAS">
+                        <h3 data-translate="portfone"><span class="portfolio-highlight">ADAS</span> - Advanced driver assistance system</h3>
                     </a>
                 </div>
                 <div class="portfolio-item">
                     <a class="portfolio-link" target="_blank" href="https://github.com/Nemo-0001/Path-Star.git">
-                        <img src="Smart Cane.jpg" alt="Smart Cane">
-                        <h3><span class="portfolio-highlight">Path
+                        <img src="Images/Smart Cane.jpg" alt="Smart Cane">
+                        <h3 data-translate="portftwo"><span class="portfolio-highlight">Path
                                     star</span> - Smart cane for the blind</h3>
                     </a>
                 </div>
                 <div class="portfolio-item">
                     <a class="portfolio-link" target="_blank" href="https://github.com/Nemo-0001/IOT-based-WeatherMonitoring.git">
-                        <img src="Weather monitoring system.jpg" alt="Weather monitoring system">
-                        <h3>IoT-based weather monitoring system</h3>
+                        <img src="Images/Weather monitoring system.jpg" alt="Weather monitoring system">
+                        <h3 data-translate="portfthree">IoT-based weather monitoring system</h3>
                     </a>
                 </div>
             </div>
         </section>
-        <section id="contact">
-            <h2>Contact us</h2>
-            <form action="#">
-                <label for="name">Name:</label>
+        <section id="contact" class="contact-section">
+            <h2 data-translate="cont">Contact us</h2>
+            <form action="#" class="contact-item">
+                <label for="name" data-translate="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-                <label for="email">e-mail:</label>
+                <label for="email" data-translate="email">e-mail:</label>
                 <input type="email" id="email" name="email" required>
-                <label for="message">Message</label>
+                <label for="message" data-translate="msg">Message</label>
                 <textarea id="message" name="message" required></textarea>
-                <button type="submit">Send</button>
+                <button type="submit" data-translate="send">Send</button>
             </form>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/abdallah-elnemr" target="_blank" class="linkedin"><i
@@ -204,10 +202,11 @@
             </div>
         </section>
     </main>
-    <footer>
-        <p>All rights reserved © 2024</p>
+    <footer class="footer-element">
+        <p data-translate="footer">All rights reserved © 2024</p>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
 

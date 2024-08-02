@@ -1,3 +1,53 @@
+let currentLang = localStorage.getItem('lang') || 'en'; // Load language from localStorage
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.body.setAttribute('lang', lang);
+    document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        el.textContent = translations[lang][key];
+    });
+}
+
+document.querySelectorAll('.language-options a').forEach(langOption => {
+    langOption.addEventListener('click', function(e) {
+        e.preventDefault();
+        setLanguage(this.getAttribute('data-lang'));
+    });
+});
+
+function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark-theme');
+    const themeText = isDark ? translations[currentLang].dark : translations[currentLang].light;
+    const themeElement = document.getElementById('currentTheme');
+    if (themeElement) {
+        themeElement.textContent = themeText;
+    }
+
+    const themeIcon = document.getElementById('themeIcon');
+    const arrowDown = document.getElementById('arrowDown');
+    themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    themeIcon.style.color = isDark ? '#ffd700' : '#444';
+    arrowDown.style.color = isDark ? '#fff' : '#444';
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+    setLanguage(currentLang);
+
+    const themeToggle = document.getElementById('toggleTheme');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.getElementById('mainHeader');
     const toggleBtn = document.getElementById('toggleHeader');
@@ -64,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
     document.getElementById("service1").addEventListener("mouseenter", function() {
         document.getElementById("myPopup1").style.display = "block";
     });
@@ -99,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-
     // Close the dropdown menu if the user clicks outside of it
     window.addEventListener('click', function(event) {
         if (!event.target.matches('.dropdown-toggle')) {
@@ -112,164 +160,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-
 });
-
-
-const translations = {
-    ar: {
-        login: "تسجيل الدخول",
-        signup: "التسجيل",
-        settings: "الإعدادات",
-        changeLanguage: "تغيير اللغة",
-        changeTheme: "تغيير السمة",
-        light: "فاتح",
-        dark: "داكن",
-        sitename: "Nemo Tech",
-        home: "Home page",
-        about: "About us",
-        serv: "Our services",
-        portf: "Portfolio",
-        contact: "Contact us"
-    },
-    en: {
-        login: "Login",
-        signup: "Sign Up",
-        settings: "Settings",
-        changeLanguage: "Change Language",
-        changeTheme: "Change Theme",
-        light: "Light",
-        dark: "Dark",
-        sitename: "نيمو للتقنيات",
-        home: "الصفحة الرئيسية",
-        about: "من نحن",
-        serv: "خدماتنا",
-        portf: "أعمالنا",
-        contact: "اتصل بنا"
-    }
-};
-
-let currentLang = 'en';
-
-function changeLanguage(lang) {
-    console.log('Changing language to:', lang);
-    currentLang = lang;
-    document.documentElement.lang = lang;
-
-    const elements = {
-        'currentLang': lang === 'ar' ? 'العربية' : 'English',
-        'loginButton': translations[lang].login,
-        'signupButton': translations[lang].signup,
-        'settingsButton': translations[lang].settings,
-        'changeLanguage': translations[lang].changeLanguage,
-        'toggleTheme': translations[lang].changeTheme
-    };
-
-    for (const [id, text] of Object.entries(elements)) {
-        const element = document.getElementById(id);
-        if (element) {
-            element.textContent = text;
-        } else {
-            console.error('Element with id "${id}" not found');
-        }
-    }
-
-    const currentTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-    const themeElement = document.getElementById('currentTheme');
-    if (themeElement) {
-        themeElement.textContent = translations[lang][currentTheme];
-    } else {
-        console.error('Element with id "currentTheme" not found');
-    }
-
-    localStorage.setItem('lang', lang);
-    console.log('Language change complete');
-}
-
-function toggleTheme() {
-    console.log('Toggling theme');
-    const isDark = document.body.classList.toggle('dark-theme');
-    const themeText = isDark ? translations[currentLang].dark : translations[currentLang].light;
-    const themeElement = document.getElementById('currentTheme');
-    if (themeElement) {
-        themeElement.textContent = themeText;
-    } else {
-        console.error('Element with id "currentTheme" not found');
-    }
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded');
-    const savedLang = localStorage.getItem('lang') || 'en';
-    const savedTheme = localStorage.getItem('theme');
-
-    changeLanguage(savedLang);
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        const themeElement = document.getElementById('currentTheme');
-        if (themeElement) {
-            themeElement.textContent = translations[savedLang].dark;
-        }
-    }
-
-    const languageOptions = document.querySelectorAll('.language-options a');
-    console.log('Found language options:', languageOptions.length);
-    languageOptions.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log('Language option clicked:', this.dataset.lang);
-            changeLanguage(this.dataset.lang);
-        });
-    });
-
-    const themeToggle = document.getElementById('toggleTheme');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    } else {
-        console.error('Element with id "toggleTheme" not found');
-    }
-});
-
-
-// Express server setup (if you use this in client-side JS, ensure it's properly integrated)
-// const express = require('express');
-// const nodemailer = require('nodemailer');
-// const app = express();
-
-// app.use(express.json());
-// app.use(express.static('public'));
-
-// app.post('/register', (req, res) => {
-//     // Registration logic
-//     res.json({ message: 'Signed up successfully' });
-// });
-
-// app.post('/contact', (req, res) => {
-//     let transporter = nodemailer.createTransport({
-//         service: 'gmail',
-
-//         auth: {
-//             user: 'alnmrbdallh328@gmail.com',
-//             pass: '@@BODY@@'
-//         }
-//         // Transport configure
-//     });
-
-//     let mailOptions = {
-//         from: req.body.email,
-//         to: 'alnmrbdallh328@example.com',
-//         subject: 'A new message from: ',
-//         text: req.body.message
-//     };
-
-//     transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//             res.status(500).send('Error happened while sending message');
-//         } else {
-//             res.json({ message: 'Message sent successfully' });
-//         }
-//     });
-// });
-
-// app.listen(3000, () => console.log('Server running on port 3000'));
